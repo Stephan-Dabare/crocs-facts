@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crocodile Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .fact-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+        }
+
+        #fact-display {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        #fact-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        #fact-button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="fact-container">
+        <p id="fact-display">Click the button to see a random crocodile fact!</p>
+        <button id="fact-button">Show Random Fact</button>
+    </div>
+    <script>
+        const facts = [
+            { "fact": "Crocodiles are large aquatic reptiles found in Africa, Asia, the Americas, and Australia." },
+            { "fact": "They are members of the order Crocodylia, which also includes alligators, caimans, and gharials." },
+            { "fact": "Crocodiles have a powerful bite, with some species having the strongest bite force of any animal." },
+            { "fact": "They are carnivorous and primarily feed on fish, birds, mammals, and occasionally smaller crocodiles." },
+            { "fact": "Crocodiles have a lifespan that can exceed 70 years in the wild." },
+            { "fact": "They are excellent swimmers and can hold their breath underwater for up to an hour." },
+            { "fact": "Crocodiles have a unique heart structure with four chambers, similar to birds and mammals." },
+            { "fact": "They are known for their ability to regulate their body temperature through basking and seeking shade." },
+            { "fact": "Crocodiles communicate through vocalizations, body postures, and chemical signals." },
+            { "fact": "They have a protective bony plate called osteoderms or scutes on their back." }
+        ];
+
+        document.getElementById('fact-button').addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            document.getElementById('fact-display').textContent = facts[randomIndex].fact;
+        });
+    </script>
+</body>
+</html>
