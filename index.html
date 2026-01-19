@@ -7,9 +7,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="wildlife-bg"></div>
     <div class="fact-container">
-        <p id="fact-display">Click the button to see a random crocodile fact!</p>
-        <button id="fact-button">Show Random Fact</button>
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/crocodile-2024360_1280.png" alt="Crocodile" class="croc-img">
+        <h1 class="title">Wild Life: Crocodile Facts</h1>
+        <p id="fact-display" class="fact-animate">Click the button to see a random crocodile fact!</p>
+        <div class="fact-controls">
+            <button id="fact-button">Show Random Fact</button>
+            <button id="next-fact">Next Fact</button>
+            <button id="toggle-all">Show All Facts</button>
+        </div>
+        <div id="fact-counter">Fact 0 of 10</div>
+        <ul id="all-facts" class="hidden"></ul>
     </div>
     <script>
         const facts = [
@@ -24,10 +33,37 @@
             { "fact": "Crocodiles communicate through vocalizations, body postures, and chemical signals." },
             { "fact": "They have a protective bony plate called osteoderms or scutes on their back." }
         ];
+        let currentFact = 0;
+        const factDisplay = document.getElementById('fact-display');
+        const factCounter = document.getElementById('fact-counter');
+        const allFactsList = document.getElementById('all-facts');
+        function showFact(index) {
+            factDisplay.classList.remove('show');
+            setTimeout(() => {
+                factDisplay.textContent = facts[index].fact;
+                factDisplay.classList.add('show');
+                factCounter.textContent = `Fact ${index + 1} of ${facts.length}`;
+            }, 200);
+        }
         document.getElementById('fact-button').addEventListener('click', () => {
             const randomIndex = Math.floor(Math.random() * facts.length);
-            document.getElementById('fact-display').textContent = facts[randomIndex].fact;
+            currentFact = randomIndex;
+            showFact(randomIndex);
         });
+        document.getElementById('next-fact').addEventListener('click', () => {
+            currentFact = (currentFact + 1) % facts.length;
+            showFact(currentFact);
+        });
+        document.getElementById('toggle-all').addEventListener('click', () => {
+            allFactsList.classList.toggle('hidden');
+            if (!allFactsList.classList.contains('hidden')) {
+                allFactsList.innerHTML = facts.map(f => `<li>🦎 ${f.fact}</li>`).join('');
+            } else {
+                allFactsList.innerHTML = '';
+            }
+        });
+        // Initial state
+        showFact(currentFact);
     </script>
 </body>
 </html>
