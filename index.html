@@ -4,48 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crocodile Facts</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-
-        .fact-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            text-align: center;
-        }
-
-        #fact-display {
-            margin-bottom: 20px;
-            font-size: 1.2em;
-            color: #333;
-        }
-
-        #fact-button {
-            padding: 10px 20px;
-            font-size: 1em;
-            color: #fff;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s;
-        }
-
-        #fact-button:hover {
-            background-color: #0056b3;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="fact-container">
@@ -65,7 +24,6 @@
             { "fact": "Crocodiles communicate through vocalizations, body postures, and chemical signals." },
             { "fact": "They have a protective bony plate called osteoderms or scutes on their back." }
         ];
-
         document.getElementById('fact-button').addEventListener('click', () => {
             const randomIndex = Math.floor(Math.random() * facts.length);
             document.getElementById('fact-display').textContent = facts[randomIndex].fact;
